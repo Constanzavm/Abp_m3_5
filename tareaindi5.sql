@@ -1,6 +1,7 @@
 CREATE SCHEMA abdasdas2;
 CREATE USER 'wasd2'@'localhost' IDENTIFIED BY 'Contrasegna.1';
 GRANT ALL PRIVILEGES ON abdasdas2 . * TO 'wasd2'@'localhost';
+USE abdasdas2;
 
 create table usuario (
 	id_usuario INT NOT NULL AUTO_INCREMENT,
