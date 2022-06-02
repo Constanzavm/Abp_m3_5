@@ -5,12 +5,15 @@ USE abdasdas2;
 
 create table usuario (
 	id_usuario INT NOT NULL AUTO_INCREMENT,
+    /*int para que exista el auto incremental*/
 	nombre VARCHAR(50),
 	apellido VARCHAR(50),
 	contraseña VARCHAR(50),
     zona_horaria VARCHAR(20) NOT NULL DEFAULT 'UTC-3',
 	genero VARCHAR(50) NOT NULL DEFAULT 'No binario',
+    /*Varchar porque letras y creo que ocupa menos espacio que un text*/
 	telefono INT NOT NULL DEFAULT '123456789',
+	/*INT porque no quiero el +56 */
     PRIMARY KEY (id_usuario)
 );
 
@@ -19,6 +22,7 @@ CREATE TABLE fechahora
 	id_ingreso INT NOT NULL AUTO_INCREMENT,
 	id_usuario INT NOT NULL,
 	fecha_hora_ingreso TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	/*Timestamp current_timestamp para que guarde la hora en que se creo la cosa*/
     PRIMARY KEY(id_ingreso)
 );
 
@@ -49,6 +53,7 @@ CREATE TABLE visitas
 (
 	id_usuario INT NOT NULL,
 	numerovisitas INT NOT NULL DEFAULT 0
+	/*INT porque es un contador */
 );
 
 INSERT INTO visitas (id_usuario, numerovisitas) 
@@ -63,3 +68,6 @@ UPDATE visitas
     
 INSERT INTO visitas (id_usuario, numerovisitas) 
 	VALUES (2, (select count(fecha_hora_ingreso) from fechahora where id_usuario = 2));
+    
+/*borrar tabla*/
+Drop table if exists visitas;
